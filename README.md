@@ -17,4 +17,4 @@ Este proyecto forma parte del módulo de React del curso, y representa la base t
 
 1. Clonar el repositorio:
    ```bash
-   git clone https://github.com/usuario/boardgames-store.git
+   git clone https://github.com/Alexiscardozo4556/boardgames-store.git
