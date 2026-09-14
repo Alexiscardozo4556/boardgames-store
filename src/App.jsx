@@ -1,9 +1,12 @@
+import Navbar from "./components/Navbar";
+import ItemListContainer from "./components/ItemListContainer";
+
 function App() {
   return (
-    <div>
-      <h1>BoardGames Store</h1>
-      <p>Tu tienda de juegos de mesa, cartas y puzles</p>
-    </div>
+    <>
+      <Navbar />
+      <ItemListContainer greeting="¡Bienvenido a nuestra tienda de juegos de mesa!" />
+    </>
   );
 }
 
