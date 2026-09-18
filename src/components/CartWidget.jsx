@@ -1,13 +1,14 @@
-import { FaShoppingCart } from "react-icons/fa";
+import styles from "./CartWidget.module.css";
 
 function CartWidget() {
-return (
-    <div className="cart">
-    <FaShoppingCart size={20} />
-    <span>3</span>
+    return (
+    <div className={styles.cartWidget}>
+    🛒 <span className={styles.cartCount}>3</span>
     </div>
-);
+    );
 }
 
 export default CartWidget;
+
+
 

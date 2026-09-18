@@ -1,9 +1,11 @@
+import styles from "./ItemListContainer.module.css";
+
 function ItemListContainer({ greeting }) {
-return (
-    <div style={{ textAlign: "center", marginTop: "2rem" }}>
-    <h1>{greeting}</h1>
-    </div>
-);
+    return (
+    <section className={styles.itemListContainer}>
+    <h2>{greeting}</h2>
+    </section>
+    );
 }
 
 export default ItemListContainer;
