@@ -29,9 +29,9 @@ En esta entrega se transformó el catálogo estático en un **modelo de datos di
 
 1. Clonar el repositorio:
    ```bash
-   git clone https://github.com
+   git clone https://github.com/Alexiscardozo4556/boardgames-store/tree/feature/listado-dinamico
    ```
-
+   
 2. Instalar las dependencias en la carpeta raíz:
    ```bash
    npm install
