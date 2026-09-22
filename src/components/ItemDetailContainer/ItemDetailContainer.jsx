@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getProductById } from "../../mock/asyncMock"; // Doble subida: sale de la carpeta y de components
+import { useParams } from "react-router-dom";
+import { getProductById } from "../../mock/asyncMock";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import styles from "./ItemDetailContainer.module.css";
 
@@ -7,9 +8,12 @@ function ItemDetailContainer() {
 const [product, setProduct] = useState(null);
 const [loading, setLoading] = useState(true);
 
+const { id } = useParams();
+
 useEffect(() => {
-    // Quemamos temporalmente el ID "1" (Catan) como pide la consigna hasta usar React Router
-    getProductById("1")
+    setLoading(true);
+    
+    getProductById(id)
     .then((data) => {
         setProduct(data);
     })
@@ -19,7 +23,7 @@ useEffect(() => {
     .finally(() => {
         setLoading(false);
     });
-}, []);
+}, [id]); 
 
 return (
     <section className={styles.container}>

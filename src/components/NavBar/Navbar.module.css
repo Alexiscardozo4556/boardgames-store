@@ -31,3 +31,7 @@
 .navLinks li:hover {
     color: #333;
 }
+
+.activeLink { 
+    border-bottom: 2px solid white; 
+}

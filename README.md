@@ -14,16 +14,12 @@ Este proyecto forma parte del módulo de React del curso, y representa la base t
 
 ---
 
-## 🛠️ Nuevas implementaciones 
+## 🗺️ Nuevas implementaciones (Checkpoint Navegación Completa)
+* **React Router DOM:** Configuración de un sistema de ruteo eficiente mediante `BrowserRouter`, `Routes` y `Route`.
+* **Navegación sin recarga (SPA):** Reemplazo de enlaces tradicionales por componentes `<Link>` y `<NavLink>` para transiciones fluidas.
+* **Rutas Dinámicas:** Implementación de parámetros de URL con `useParams` para renderizar de manera automatizada las categorías (`/category/:id`) y el detalle pormenorizado de cada producto (`/item/:id`).
+* **Manejo de rutas inválidas:** Creación de una vista de error 404 (NotFound) para contener accesos a URLs inexistentes.
 
-En esta etapa se implementó la vista de detalle de un producto individual aplicando el patrón de diseño de **separación de responsabilidades** (Componentes Contenedores y de Presentación).
-
-### 🛠️ Características implementadas:
-* **Estructura Modular:** Organización de componentes en carpetas individuales con estilos encapsulados mediante **CSS Modules**.
-* **Lógica Asincrónica Dinámica:** Función `getProductById` que busca productos mediante su propiedad `id` y retorna una `Promise` simulando el delay de una API (2 segundos).
-* **ItemDetailContainer:** Componente encargado de concentrar la lógica, controlar los estados de carga (`loading`) y consumir la promesa.
-* **ItemDetail:** Componente de presentación que renderiza la información detallada del producto (Imagen, Nombre, Categoría, Descripción, Precio y Stock).
-* **Reutilización de ItemCount:** Integración del contador dinámico dentro del detalle respetando de forma estricta los límites del stock disponible (mínimo 1, máximo según stock del producto).
 
 ### 📂 Estructura del Proyecto:
 ```text
