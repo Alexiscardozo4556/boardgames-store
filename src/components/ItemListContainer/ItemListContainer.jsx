@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getProducts } from "../mock/asyncMock";
-import ItemList from "./ItemList";
+import { getProducts } from "../../mock/asyncMock";
+import ItemList from "../ItemList/ItemList";
 import styles from "./ItemListContainer.module.css";
 
 function ItemListContainer({ greeting }) {

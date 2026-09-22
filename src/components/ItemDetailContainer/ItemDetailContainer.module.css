@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 2rem;
+}
+
+.loading {
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+}
+
+.error {
+    font-size: 1.2rem;
+    color: #c0392b;
+    font-weight: bold;
+}
