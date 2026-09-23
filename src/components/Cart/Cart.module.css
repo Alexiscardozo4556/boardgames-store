@@ -1,0 +1,136 @@
+.emptyContainer {
+    text-align: center;
+    padding: 5rem 2rem;
+    min-height: 50vh;
+}
+
+.returnButton {
+    display: inline-block;
+    background-color: orange;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1.5rem;
+}
+
+.cartContainer {
+    max-width: 900px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    min-height: 60vh;
+}
+
+.itemsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.cartItem {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    gap: 2rem;
+}
+
+.itemImage {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.itemDetails {
+    flex: 1;
+}
+
+.itemDetails h3 {
+    margin: 0 0 0.3rem 0;
+}
+
+.itemCategory {
+    font-size: 0.85rem;
+    color: #777;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.subtotal {
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.deleteButton {
+    background-color: #fce4e4;
+    color: #c0392b;
+    border: 1px solid #f9cbd7;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.deleteButton:hover {
+    background-color: #f9d2d2;
+}
+
+.summarySection {
+    margin-top: 3rem;
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: right;
+}
+
+.summarySection h3 {
+    font-size: 1.6rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.clearButton {
+    background-color: #7f8c8d;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.checkoutButton {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.checkoutButton:hover {
+    background-color: #219653;
+}
+
+@media (max-width: 600px) {
+    .cartItem {
+        flex-direction: column;
+        text-align: center;
+    }
+    .actions {
+        flex-direction: column;
+    }
+}

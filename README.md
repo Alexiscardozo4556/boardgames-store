@@ -14,31 +14,12 @@ Este proyecto forma parte del módulo de React del curso, y representa la base t
 
 ---
 
-## 🗺️ Nuevas implementaciones (Checkpoint Navegación Completa)
-* **React Router DOM:** Configuración de un sistema de ruteo eficiente mediante `BrowserRouter`, `Routes` y `Route`.
-* **Navegación sin recarga (SPA):** Reemplazo de enlaces tradicionales por componentes `<Link>` y `<NavLink>` para transiciones fluidas.
-* **Rutas Dinámicas:** Implementación de parámetros de URL con `useParams` para renderizar de manera automatizada las categorías (`/category/:id`) y el detalle pormenorizado de cada producto (`/item/:id`).
-* **Manejo de rutas inválidas:** Creación de una vista de error 404 (NotFound) para contener accesos a URLs inexistentes.
-
-
-### 📂 Estructura del Proyecto:
-```text
-src/
-├── components/
-│   ├── CartWidget/
-│   ├── Item/
-│   ├── ItemCount/
-│   ├── ItemDetail/
-│   ├── ItemDetailContainer/
-│   ├── ItemList/
-│   ├── ItemListContainer/
-│   └── Navbar/
-├── mock/
-│   └── asyncMock.js
-├── App.jsx
-└── main.jsx
-```
-
+## 🛒 Nuevas implementaciones (Checkpoint Carrito Funcional)
+* **CartContext global:** Creación de un estado centralizado mediante Context API para evitar el prop drilling en la aplicación.
+* **Actualizaciones inmutables:** Gestión inmutable del array del carrito a través de funciones lógicas de mapeo (`.map`) y filtrado (`.filter`) de React.
+* **Control de duplicados:** Inteligencia para detectar IDs preexistentes incrementando su volumen por separado sin sobreescribir slots del catálogo.
+* **Widget dinámico de Navbar:** CartWidget sincronizado globalmente que muta su insignia circular según cantidades de items agregados y se autohabilita selectivamente.
+* **Vista detallada de órdenes:** Nueva ruta `/cart` con renderización condicional para listas vacías o reportes completos de subtotales y cierres de compra.
 
 ## 📦 Instalación y ejecución
 

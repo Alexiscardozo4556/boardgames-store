@@ -1,20 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext"; 
 import ItemCount from "../ItemCount/ItemCount";
 import styles from "./ItemDetail.module.css";
 
 function ItemDetail({ product }) {
+const [goToCart, setGoToCart] = useState(false);
+const { addItem } = useCart();
+
 const handleOnAdd = (quantity) => {
-    console.log(`Agregados ${quantity} unidades de ${product.name} al carrito`);
+    // Agregamos estas dos líneas para espiar el error en la consola
+    console.log("1. Producto recibido en Detail:", product);
+    console.log("2. Función addItem del contexto:", addItem);
+
+    setGoToCart(true);
+    addItem(product, quantity); 
 };
+
 
 return (
     <article className={styles.detailContainer}>
-      {/* Sector 1: Imagen Principal */}
     <div className={styles.imageSection}>
         <img src={product.img} alt={product.name} className={styles.image} />
     </div>
 
-      {/* Sector 2: Bloque de Información Completa */}
     <div className={styles.infoSection}>
         <p className={styles.category}>{product.category}</p>
         <h1 className={styles.name}>{product.name}</h1>
@@ -22,8 +31,13 @@ return (
         <p className={styles.price}>\${product.price.toLocaleString()}</p>
         <p className={styles.stock}>Stock disponible: {product.stock} unidades</p>
         
-        {/* Reutilización del ItemCount pasándole el stock del producto de forma dinámica */}
+        {goToCart ? (
+        <Link to="/cart" className={styles.finishButton}>
+            Finalizar Compra (Ir al carrito)
+        </Link>
+        ) : (
         <ItemCount stock={product.stock} onAdd={handleOnAdd} />
+        )}
     </div>
     </article>
 );

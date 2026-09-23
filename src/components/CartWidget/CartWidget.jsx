@@ -1,11 +1,17 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext"; 
 import styles from "./CartWidget.module.css";
 
 function CartWidget() {
-    return (
-    <div className={styles.cartWidget}>
-    🛒 <span className={styles.cartCount}>3</span>
-    </div>
-    );
+const { totalItems } = useCart();
+
+return (
+    <Link to="/cart" className={styles.cartWidget}>
+    🛒 
+    {totalItems > 0 && <span className={styles.cartCount}>{totalItems}</span>}
+    </Link>
+);
 }
 
 export default CartWidget;
