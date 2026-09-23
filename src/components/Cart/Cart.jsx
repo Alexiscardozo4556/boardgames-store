@@ -30,8 +30,8 @@ return (
             <h3>{product.name}</h3>
             <p className={styles.itemCategory}>{product.category}</p>
             <p>Cantidad: <strong>{product.quantity}</strong></p>
-            <p>Precio Unitario: \${product.price.toLocaleString()}</p>
-              <p className={styles.subtotal}>Subtotal: \${(product.price * product.quantity).toLocaleString()}</p>
+            <p>Precio Unitario: ${product.price.toLocaleString()}</p>
+              <p className={styles.subtotal}>Subtotal: ${(product.price * product.quantity).toLocaleString()}</p>
             </div>
             <button className={styles.deleteButton} onClick={() => removeItem(product.id)}>
             ❌ Eliminar
@@ -41,14 +41,15 @@ return (
     </div>
 
     <div className={styles.summarySection}>
-        <h3>Total General: \${totalPrice.toLocaleString()}</h3>
+        <h3>Total General: ${totalPrice.toLocaleString()}</h3>
         <div className={styles.actions}>
         <button className={styles.clearButton} onClick={clear}>
             Vaciar Carrito🗑️
         </button>
-        <button className={styles.checkoutButton} onClick={() => alert("¡Próximamente conectaremos con Firebase para procesar tu orden!")}>
-            Finalizar Compra 💳
-        </button>
+        
+        <Link to="/checkout" className={styles.checkoutButton} style={{ textDecoration: "none" }}>
+            Proceder al Checkout 💳
+        </Link>
         </div>
     </div>
     </div>

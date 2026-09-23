@@ -9,7 +9,6 @@ const [goToCart, setGoToCart] = useState(false);
 const { addItem } = useCart();
 
 const handleOnAdd = (quantity) => {
-    // Agregamos estas dos líneas para espiar el error en la consola
     console.log("1. Producto recibido en Detail:", product);
     console.log("2. Función addItem del contexto:", addItem);
 

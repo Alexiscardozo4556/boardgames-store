@@ -1,12 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext"; 
 import CartWidget from "../CartWidget/CartWidget";
 import styles from "./Navbar.module.css";
 
 function Navbar() {
+const { user, logoutUser } = useAuth();
+
 return (
     <nav className={styles.navbar}>
-      {/* El logo redirige siempre al inicio */}
-    <Link to="/" className={styles.logoLink}>
+    <Link to="/" className={styles.logoLink} style={{ textDecoration: "none" }}>
         <h1 className={styles.logo}>Boardgames</h1>
     </Link>
     
@@ -27,6 +29,43 @@ return (
         </NavLink>
         </li>
     </ul>
+
+    <div className={styles.authSection} style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+        {user ? (
+        <div style={{ color: "white", fontSize: "0.9rem", display: "flex", gap: "1rem", alignItems: "center" }}>
+            <span>👤 {user.email}</span>
+            <button 
+            onClick={logoutUser} 
+            style={{ 
+                background: "white", 
+                color: "orange", 
+                border: "none", 
+                padding: "0.3rem 0.6rem", 
+                borderRadius: "4px", 
+                fontWeight: "bold", 
+                cursor: "pointer" 
+            }}
+            >
+            Salir
+            </button>
+        </div>
+        ) : (
+        <Link 
+            to="/login" 
+            style={{ 
+            color: "white", 
+            textDecoration: "none", 
+            fontWeight: "bold",
+            border: "1px solid white",
+            padding: "0.3rem 0.6rem",
+            borderRadius: "4px"
+            }}
+        >
+            Ingresar
+        </Link>
+        )}
+    </div>
+
     <CartWidget />
     </nav>
 );

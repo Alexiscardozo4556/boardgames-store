@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getProductById } from "../../mock/asyncMock";
+import { db } from "../../firebase/config";
+import { doc, getDoc } from "firebase/firestore";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import styles from "./ItemDetailContainer.module.css";
 
 function ItemDetailContainer() {
 const [product, setProduct] = useState(null);
 const [loading, setLoading] = useState(true);
-
 const { id } = useParams();
 
 useEffect(() => {
     setLoading(true);
     
-    getProductById(id)
-    .then((data) => {
-        setProduct(data);
+    const docRef = doc(db, "products", id);
+    
+    getDoc(docRef)
+    .then((snapshot) => {
+        if (snapshot.exists()) {
+        setProduct({ id: snapshot.id, ...snapshot.data() });
+        } else {
+        setProduct(null);
+        }
     })
-    .catch((error) => {
-        console.error("Error al obtener detalle del producto:", error);
-    })
-    .finally(() => {
-        setLoading(false);
-    });
-}, [id]); 
+    .catch((error) => console.error("Error al traer detalle:", error))
+    .finally(() => setLoading(false));
+}, [id]);
 
 return (
     <section className={styles.container}>
