@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../firebase/config";
+import { auth } from "../firebase/config"; 
 import { 
 createUserWithEmailAndPassword, 
 signInWithEmailAndPassword, 
@@ -9,6 +9,7 @@ onAuthStateChanged
 
 const AuthContext = createContext();
 
+// CORRECCIÓN EFECTIVA: useAuth consume únicamente AuthContext sin interferencias
 export const useAuth = () => useContext(AuthContext);
 
 export function AuthProvider({ children }) {

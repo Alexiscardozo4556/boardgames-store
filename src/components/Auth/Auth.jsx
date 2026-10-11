@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./Auth.module.css"; 
+
 function Auth() {
 const [isRegister, setIsRegister] = useState(false);
 const [email, setEmail] = useState("");
@@ -14,15 +15,36 @@ const navigate = useNavigate();
 const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    
+    // 1. Limpiamos espacios fantasmas que suelen colarse al escribir o pegar
+    const cleanEmail = email.trim();
+    const cleanPassword = password.trim();
+
+    // 2. Controlamos de antemano el límite de caracteres de Firebase
+    if (cleanPassword.length < 6) {
+    setError("La contraseña debe tener al menos 6 caracteres.");
+    return;
+    }
+
     try {
     if (isRegister) {
-        await registerUser(email, password);
+        await registerUser(cleanEmail, cleanPassword);
     } else {
-        await loginUser(email, password);
+        await loginUser(cleanEmail, cleanPassword);
     }
     navigate("/checkout");
     } catch (err) {
-    setError("Credenciales inválidas o error de registro. Intente nuevamente.");
+      // 3. LOG DE DIAGNÓSTICO: Esto te va a decir el código de error real en la consola
+    console.error("Código de error exacto de Firebase:", err.code);
+    console.error("Mensaje completo:", err.message);
+
+    if (err.code === "auth/email-already-in-use") {
+        setError("Este correo ya está registrado. Intentá iniciar sesión.");
+    } else if (err.code === "auth/invalid-credential" || err.code === "auth/wrong-password") {
+        setError("Contraseña incorrecta o usuario no encontrado.");
+    } else {
+        setError("Ocurrió un error. Por favor, intente nuevamente.");
+    }
     }
 };
 

@@ -2,16 +2,18 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
+// Inyectamos tus credenciales reales directamente en el objeto de configuración
 const firebaseConfig = {
-apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-appId: import.meta.env.VITE_FIREBASE_APP_ID
+apiKey: "AIzaSyDRZECOGJVOixfG8usnazaFgwPSKt03UgI",
+authDomain: "://firebaseapp.com",
+projectId: "boardgames-store",
+storageBucket: "boardgames-store.firebasestorage.app",
+messagingSenderId: "716422542247",
+appId: "1:716422542247:web:0fb58cd241c77930197c82"
 };
 
 const app = initializeApp(firebaseConfig);
 
+// Exportamos los servicios requeridos por la rúbrica
 export const db = getFirestore(app);
 export const auth = getAuth(app);

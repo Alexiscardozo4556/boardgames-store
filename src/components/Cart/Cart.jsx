@@ -4,7 +4,7 @@ import { useCart } from "../../context/CartContext";
 import styles from "./Cart.module.css";
 
 function Cart() {
-const { cart, removeItem, clear, totalPrice } = useCart();
+const { cart, removeItem, clear, totalPrice, decreaseQuantity, increaseQuantity } = useCart();
 
 if (cart.length === 0) {
     return (
@@ -29,7 +29,39 @@ return (
             <div className={styles.itemDetails}>
             <h3>{product.name}</h3>
             <p className={styles.itemCategory}>{product.category}</p>
-            <p>Cantidad: <strong>{product.quantity}</strong></p>
+            
+              {/* SELECTOR INTERACTIVO DE CANTIDAD (+ / -) */}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", margin: "0.5rem 0" }}>
+                <span>Cantidad:</span>
+                <button 
+                onClick={() => decreaseQuantity(product.id)}
+                style={{ 
+                    background: "#eee", 
+                    border: "1px solid #ccc", 
+                    padding: "0.2rem 0.5rem", 
+                    cursor: "pointer", 
+                    fontWeight: "bold",
+                    borderRadius: "4px"
+                }}
+                >
+                -
+                </button>
+                <strong style={{ minWidth: "20px", textAlign: "center" }}>{product.quantity}</strong>
+                <button 
+                onClick={() => increaseQuantity(product.id)}
+                style={{ 
+                    background: "#eee", 
+                    border: "1px solid #ccc", 
+                    padding: "0.2rem 0.5rem", 
+                    cursor: "pointer", 
+                    fontWeight: "bold",
+                    borderRadius: "4px"
+                }}
+                >
+                +
+                </button>
+            </div>
+
             <p>Precio Unitario: ${product.price.toLocaleString()}</p>
               <p className={styles.subtotal}>Subtotal: ${(product.price * product.quantity).toLocaleString()}</p>
             </div>

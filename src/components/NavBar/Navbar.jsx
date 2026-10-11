@@ -4,10 +4,16 @@ import CartWidget from "../CartWidget/CartWidget";
 import styles from "./Navbar.module.css";
 
 function Navbar() {
-const { user, logoutUser } = useAuth();
+  // Consumimos el contexto de forma segura
+const authContext = useAuth();
+
+  // Control de seguridad: Si por alguna razón el contexto viene vacío, creamos un salvavidas
+const user = authContext ? authContext.user : null;
+const logoutUser = authContext ? authContext.logoutUser : () => {};
 
 return (
     <nav className={styles.navbar}>
+      {/* El logo redirige siempre al inicio */}
     <Link to="/" className={styles.logoLink} style={{ textDecoration: "none" }}>
         <h1 className={styles.logo}>Boardgames</h1>
     </Link>
@@ -30,8 +36,9 @@ return (
         </li>
     </ul>
 
+      {/* SECCIÓN DE AUTENTICACIÓN BLINDADA */}
     <div className={styles.authSection} style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-        {user ? (
+        {user && user.email ? (
         <div style={{ color: "white", fontSize: "0.9rem", display: "flex", gap: "1rem", alignItems: "center" }}>
             <span>👤 {user.email}</span>
             <button 
