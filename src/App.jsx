@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
 import Navbar from "./components/NavBar/Navbar";
+import Hero from "./components/Hero/Hero"; 
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/Cart/Cart"; 
@@ -13,7 +14,6 @@ import Footer from "./components/footer/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// 🚀 PIEZA PREMIUM: Banner superior estilo Adidas/Nike
 function TopBanner() {
   return (
     <div style={{ 
@@ -45,12 +45,17 @@ function App() {
     <AuthProvider>
       <CartProvider>
         <BrowserRouter>
-          {/* EL BANNER VA ACÁ ARRIBA DE TODO */}
           <TopBanner />
           <Navbar />
           
           <Routes>
-            <Route path="/" element={<ItemListContainer greeting="¡Bienvenido a nuestra tienda de juegos de mesa!" />} />
+            <Route path="/" element={
+              <>
+                <Hero />
+                <ItemListContainer greeting="¡Bienvenido a nuestra tienda de juegos de mesa!" />
+              </>
+            } />
+            
             <Route path="/category/:id" element={<ItemListContainer greeting="Filtrando por categoría" />} />
             <Route path="/item/:id" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
