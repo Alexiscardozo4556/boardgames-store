@@ -1,79 +1,80 @@
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext"; 
 import CartWidget from "../CartWidget/CartWidget";
 import styles from "./Navbar.module.css";
 
 function Navbar() {
-  // Consumimos el contexto de forma segura
 const authContext = useAuth();
-
-  // Control de seguridad: Si por alguna razón el contexto viene vacío, creamos un salvavidas
 const user = authContext ? authContext.user : null;
 const logoutUser = authContext ? authContext.logoutUser : () => {};
 
+  // Estado para abrir y cerrar el menú hamburguesa en celulares
+const [menuOpen, setMenuOpen] = useState(false);
+
+const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+};
+
 return (
     <nav className={styles.navbar}>
-      {/* El logo redirige siempre al inicio */}
-    <Link to="/" className={styles.logoLink} style={{ textDecoration: "none" }}>
+      {/* Logo principal */}
+    <Link to="/" className={styles.logoLink} onClick={() => setMenuOpen(false)}>
         <h1 className={styles.logo}>Boardgames</h1>
     </Link>
     
-    <ul className={styles.navLinks}>
+      {/* Botón Hamburguesa (solo visible en celulares) */}
+    <button className={styles.hamburger} onClick={toggleMenu}>
+        <span className={`${styles.bar} ${menuOpen ? styles.open1 : ""}`}></span>
+        <span className={`${styles.bar} ${menuOpen ? styles.open2 : ""}`}></span>
+        <span className={`${styles.bar} ${menuOpen ? styles.open3 : ""}`}></span>
+    </button>
+
+      {/* Enlaces de categorías dinámicos */}
+    <ul className={`${styles.navLinks} ${menuOpen ? styles.activeMenu : ""}`}>
         <li>
-        <NavLink to="/category/Juegos de mesa" className={({ isActive }) => isActive ? styles.activeLink : ""}>
+        <NavLink 
+            to="/category/Juegos de mesa" 
+            className={({ isActive }) => isActive ? styles.activeLink : ""}
+            onClick={() => setMenuOpen(false)}
+        >
             Juegos de mesa
         </NavLink>
         </li>
         <li>
-        <NavLink to="/category/Cartas" className={({ isActive }) => isActive ? styles.activeLink : ""}>
+        <NavLink 
+            to="/category/Cartas" 
+            className={({ isActive }) => isActive ? styles.activeLink : ""}
+            onClick={() => setMenuOpen(false)}
+        >
             Cartas
         </NavLink>
         </li>
         <li>
-        <NavLink to="/category/Puzzles" className={({ isActive }) => isActive ? styles.activeLink : ""}>
+        <NavLink 
+            to="/category/Puzzles" 
+            className={({ isActive }) => isActive ? styles.activeLink : ""}
+            onClick={() => setMenuOpen(false)}
+        >
             Puzzles
         </NavLink>
         </li>
     </ul>
 
-      {/* SECCIÓN DE AUTENTICACIÓN BLINDADA */}
-    <div className={styles.authSection} style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+      {/* Sección de autenticación y carrito */}
+    <div className={styles.rightSection}>
         {user && user.email ? (
-        <div style={{ color: "white", fontSize: "0.9rem", display: "flex", gap: "1rem", alignItems: "center" }}>
+        <div className={styles.userInfo}>
             <span>👤 {user.email}</span>
-            <button 
-            onClick={logoutUser} 
-            style={{ 
-                background: "white", 
-                color: "orange", 
-                border: "none", 
-                padding: "0.3rem 0.6rem", 
-                borderRadius: "4px", 
-                fontWeight: "bold", 
-                cursor: "pointer" 
-            }}
-            >
-            Salir
-            </button>
+            <button onClick={logoutUser} className={styles.logoutBtn}>Salir</button>
         </div>
         ) : (
-        <Link 
-            to="/login" 
-            style={{ 
-            color: "white", 
-            textDecoration: "none", 
-            fontWeight: "bold",
-            border: "1px solid white",
-            padding: "0.3rem 0.6rem",
-            borderRadius: "4px"
-            }}
-        >
+        <Link to="/login" className={styles.loginBtn} onClick={() => setMenuOpen(false)}>
             Ingresar
         </Link>
         )}
+        <CartWidget />
     </div>
-
-    <CartWidget />
     </nav>
 );
 }

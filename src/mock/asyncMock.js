@@ -24,7 +24,7 @@ const products = [
     name: "Puzzle 1000 pz Paisaje",
     price: 18000,
     category: "Puzzles",
-    img: "/images/+1000 piezas.jpg",
+    img: "/images/+1000piezas.jpg",
     stock: 5,
     description: "Desafía tu mente y tu concentración armando este hermoso y detallado paisaje alpino de alta calidad con encaje perfecto.",
     showInHome: true 

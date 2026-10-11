@@ -1,37 +1,140 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: orange;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1rem 2rem;
+background-color: orange;
+position: relative;
+z-index: 100;
+}
+
+.logoLink {
+text-decoration: none;
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
+color: white;
+margin: 0;
+font-size: 1.8rem;
 }
 
 .navLinks {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
+display: flex;
+list-style: none; 
+gap: 2rem;
+margin: 0;
+padding: 0;
 }
 
 .navLinks li {
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
-    transition: color 0.3s ease;
+margin: 0;
+padding: 0;
 }
 
-.navLinks li:hover {
-    color: #333;
+.navLinks a {
+color: white;
+text-decoration: none;
+font-weight: bold;
+font-size: 1.1rem;
+transition: color 0.3s;
 }
 
-.activeLink { 
-    border-bottom: 2px solid white; 
+.navLinks a:hover {
+color: #f1f1f1;
+}
+
+.activeLink {
+border-bottom: 2px solid white;
+padding-bottom: 4px;
+}
+
+.rightSection {
+display: flex;
+align-items: center;
+gap: 1.5rem;
+}
+
+.userInfo {
+color: white;
+font-size: 0.9rem;
+display: flex;
+gap: 1rem;
+align-items: center;
+}
+
+.logoutBtn {
+background: white;
+color: orange;
+border: none;
+padding: 0.3rem 0.6rem;
+border-radius: 4px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.loginBtn {
+color: white;
+text-decoration: none;
+font-weight: bold;
+border: 1px solid white;
+padding: 0.3rem 0.6rem;
+border-radius: 4px;
+}
+
+.hamburger {
+display: none;
+flex-direction: column;
+justify-content: space-between;
+width: 24px;
+height: 18px;
+background: transparent;
+border: none;
+cursor: pointer;
+padding: 0;
+}
+
+.bar {
+width: 100%;
+height: 3px;
+background-color: white;
+border-radius: 2px;
+transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+.hamburger {
+    display: flex; 
+}
+
+.navLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: orange;
+    gap: 1.5rem;
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.navLinks.activeMenu {
+    height: auto;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.open1 {
+    transform: translateY(7px) rotate(45deg);
+}
+.open2 {
+    opacity: 0;
+}
+.open3 {
+    transform: translateY(-8px) rotate(-45deg);
+}
 }
