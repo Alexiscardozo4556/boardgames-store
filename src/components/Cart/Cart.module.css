@@ -1,49 +1,305 @@
-.navbar {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1rem 2rem;
-background-color: orange;
-flex-wrap: wrap; 
-gap: 1rem;
-}
-
-.logoLink {
-text-decoration: none;
-}
-
-.logo {
-color: white;
-margin: 0;
-font-size: 1.8rem;
-}
-
-.navLinks {
-display: flex;
-list-style: none;
-gap: 2rem;
-margin: 0;
-padding: 0;
-}
-
-.navLinks a {
-color: white;
-text-decoration: none;
-font-weight: 500;
-font-size: 1.1rem;
-}
-
-.activeLink {
-border-bottom: 2px solid white;
-padding-bottom: 4px;
-}
-
-/* 📱 MEDIA QUERIES RESPONSIVAS CON LLAVES CORRECTAS */
-@media (max-width: 768px) {
-.navLinks {
-    display: flex;
-    justify-content: center;
+/* Contenedor principal de la página del carrito */
+.cartContainer {
+    max-width: 1000px;
     width: 100%;
-    order: 3; 
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    min-height: 70vh;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
 }
+
+.cartContainer h2 {
+    color: #2c3e50;
+    font-size: 2.2rem;
+    border-bottom: 3px solid orange;
+    padding-bottom: 0.8rem;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+}
+
+/* Contenedor de la lista de productos */
+.itemsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Tarjeta individual de cada juego en el carrito */
+.cartItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    gap: 2.5rem;
+    border: 1px solid #eef2f5;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cartItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen del juego */
+.itemImage {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    background-color: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+/* Detalles del texto */
+.itemDetails {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.itemDetails h3 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.itemCategory {
+    font-size: 0.85rem;
+    color: orange;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.itemDetails p {
+    margin: 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+/* Subtotal destacado en grande */
+.subtotal {
+    font-weight: bold;
+    color: #e67e22;
+    font-size: 1.15rem;
+    margin-top: 0.2rem;
+}
+
+/* Botonera de cantidad (+ / -) */
+.quantityContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0.5rem 0;
+}
+
+.quantityBtn {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    border: 1px solid #dcdde1;
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.quantityBtn:hover {
+    background-color: orange;
+    color: white;
+    border-color: orange;
+}
+
+.quantityCount {
+    min-width: 25px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+/* Botón Eliminar Producto Individual */
+.deleteButton {
+    background-color: #fff5f5;
+    color: #e74c3c;
+    border: 1px solid #fecdd3;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.deleteButton:hover {
+    background-color: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+/* Sección de resumen del total abajo */
+.summarySection {
+    background: linear-gradient(135deg, #f8f9fa 0%, #f1f2f6 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: right;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    border: 1px solid #e4e7eb;
+}
+
+.summarySection h3 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin: 0 0 1.5rem 0;
+    font-weight: 700;
+}
+
+/* Contenedor de acciones finales */
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5rem;
+}
+
+.clearButton {
+    background-color: #95a5a6;
+    color: white;
+    border: none;
+    padding: 0.9rem 1.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.clearButton:hover {
+    background-color: #7f8c8d;
+}
+
+.checkoutButton {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 0.9rem 2.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+    transition: all 0.2s ease;
+}
+
+.checkoutButton:hover {
+    background-color: #27ae60;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(46, 204, 113, 0.3);
+}
+
+/* Pantalla de Carrito Vacío */
+.emptyContainer {
+    text-align: center;
+    padding: 6rem 2rem;
+    min-height: 50vh;
+}
+
+.emptyContainer h2 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.emptyContainer p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.returnButton {
+    display: inline-block;
+    background-color: orange;
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.05rem;
+    box-shadow: 0 4px 10px rgba(255, 165, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.returnButton:hover {
+    background-color: #e67e22;
+    transform: translateY(-1px);
+}
+
+/* 📱 ADAPTACIÓN RESPONSIVA TOTAL MÓVIL */
+@media (max-width: 768px) {
+    .cartItem {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        padding: 2rem 1.5rem;
+    }
+
+    .itemImage {
+        width: 140px;
+        height: 140px;
+    }
+
+    .quantityContainer {
+        justify-content: center;
+    }
+
+    .deleteButton {
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .summarySection {
+        text-align: center;
+        padding: 2rem 1.5rem;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .clearButton, .checkoutButton {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+
+/* 🌟 EFECTO SQUISH: Cuando hacés clic y mantenés apretado el botón */
+.quantityBtn:active {
+  transform: scale(0.9); /* Se encoge un 10% instantáneamente */
+background-color: #e0e0e0;
+}
+
+.checkoutButton:active {
+  transform: scale(0.96); /* Se comprime suavemente simulando un pulsador */
+transition: transform 0.1s ease;
+}
+
+.clearButton:active, .deleteButton:active {
+transform: scale(0.95);
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
-import { AuthProvider } from "./context/AuthContext"; // Importamos Auth
+import { AuthProvider } from "./context/AuthContext";
 import Navbar from "./components/NavBar/Navbar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
@@ -9,6 +9,27 @@ import Cart from "./components/Cart/Cart";
 import Auth from "./components/Auth/Auth";
 import Checkout from "./components/Checkout/Checkout";
 import Footer from "./components/footer/Footer";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// 🚀 PIEZA PREMIUM: Banner superior estilo Adidas/Nike
+function TopBanner() {
+  return (
+    <div style={{ 
+      backgroundColor: "#111111", 
+      color: "#ffffff", 
+      fontSize: "0.75rem", 
+      padding: "0.5rem 1rem", 
+      textAlign: "center", 
+      fontWeight: "bold", 
+      letterSpacing: "1px",
+      textTransform: "uppercase"
+    }}>
+      🚚 ¡Envío gratis en compras mayores a $60.000! • 3 Cuotas sin interés 🎲
+    </div>
+  );
+}
 
 function NotFound() {
   return (
@@ -24,6 +45,8 @@ function App() {
     <AuthProvider>
       <CartProvider>
         <BrowserRouter>
+          {/* EL BANNER VA ACÁ ARRIBA DE TODO */}
+          <TopBanner />
           <Navbar />
           
           <Routes>
@@ -39,6 +62,7 @@ function App() {
           <Footer />
         </BrowserRouter>
       </CartProvider>
+      <ToastContainer position="top-right" autoClose={3000} theme="colored" limit={3} />
     </AuthProvider>
   );
 }

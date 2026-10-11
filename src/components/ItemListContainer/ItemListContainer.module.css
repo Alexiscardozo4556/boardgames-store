@@ -6,6 +6,7 @@
     margin: 0 auto;
     max-width: 1200px;
     width: 100%;
+    box-sizing: border-box; /* Evita que el padding estire el contenedor hacia afuera */
 }
 
 .itemListContainer h2 {
@@ -21,4 +22,16 @@
     color: #666;
     text-align: center;
     margin-top: 2rem;
+}
+
+/* 📱 REGLA PARA CELULARES: Achica los márgenes del título y los bordes */
+@media (max-width: 600px) {
+    .itemListContainer {
+        padding: 0.8rem; /* Deja un borde fino al costado del celular para ganar espacio */
+    }
+    
+    .itemListContainer h2 {
+        font-size: 1.5rem; /* Título un poco más chico para celulares */
+        margin-bottom: 1rem;
+    }
 }

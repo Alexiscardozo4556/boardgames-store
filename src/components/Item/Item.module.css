@@ -8,6 +8,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    /* 🌟 EFECTO PREMIUM: Transición ultra fluida para la flotación y la sombra */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* 🔍 AL PASAR EL MOUSE (Estilo Adidas/Nike) */
+.card:hover {
+    transform: scale(1.03); /* Se agranda un 3% milimétricamente */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12); /* Sombra elegante que da profundidad visual */
 }
 
 .image {
@@ -49,9 +59,16 @@
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
+    /* Transición suave para el color y la compresión táctil */
+    transition: background-color 0.2s ease, transform 0.1s ease; 
 }
 
 .button:hover {
     background-color: #34495e;
+}
+
+/* 👆 AL HACER CLIC EN EL BOTÓN (Efecto de presión elástica) */
+.button:active {
+    transform: scale(0.96); /* Se comprime sutilmente al presionarlo */
 }
 

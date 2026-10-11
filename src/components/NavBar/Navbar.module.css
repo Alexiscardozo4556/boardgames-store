@@ -18,15 +18,18 @@ margin: 0;
 font-size: 1.8rem;
 }
 
-.navLinks {
+.menuWrapper {
 display: flex;
-list-style: none; 
+align-items: center;
 gap: 2rem;
-margin: 0;
-padding: 0;
+flex: 1;
+justify-content: center;
 }
 
-.navLinks li {
+.navLinks {
+display: flex;
+list-style: none;
+gap: 2rem;
 margin: 0;
 padding: 0;
 }
@@ -39,10 +42,6 @@ font-size: 1.1rem;
 transition: color 0.3s;
 }
 
-.navLinks a:hover {
-color: #f1f1f1;
-}
-
 .activeLink {
 border-bottom: 2px solid white;
 padding-bottom: 4px;
@@ -51,7 +50,15 @@ padding-bottom: 4px;
 .rightSection {
 display: flex;
 align-items: center;
-gap: 1.5rem;
+gap: 1.2rem;
+}
+
+.authDesktopOnly {
+display: flex;
+}
+
+.authMobileOnly {
+display: none;
 }
 
 .userInfo {
@@ -101,12 +108,35 @@ border-radius: 2px;
 transition: all 0.3s ease;
 }
 
+/* 📱 CONFIGURACIÓN RESPONSIVA TOTAL PARA CELULARES */
 @media (max-width: 768px) {
 .hamburger {
-    display: flex; 
+    display: flex;
 }
 
-.navLinks {
+.authDesktopOnly {
+    display: none; /* Escondemos el mail largo de la barra superior */
+}
+
+.authMobileOnly {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.userInfoMobile {
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+  /* El bloque contenedor oculta las categorías y la sesión */
+.menuWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,22 +149,25 @@ transition: all 0.3s ease;
     padding: 0;
     height: 0;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.navLinks.activeMenu {
+.navLinks {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.menuWrapper.activeMenu {
     height: auto;
     padding: 1.5rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.open1 {
-    transform: translateY(7px) rotate(45deg);
-}
-.open2 {
-    opacity: 0;
-}
-.open3 {
-    transform: translateY(-8px) rotate(-45deg);
-}
+  /* Animaciones de la X */
+.open1 { transform: translateY(7px) rotate(45deg); }
+.open2 { opacity: 0; }
+.open3 { transform: translateY(-8px) rotate(-45deg); }
 }
