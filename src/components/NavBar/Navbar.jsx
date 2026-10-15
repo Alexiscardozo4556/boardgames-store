@@ -16,9 +16,15 @@ const toggleMenu = () => {
 
 return (
     <nav className={styles.navbar}>
-      {/* LADO IZQUIERDO: Logo */}
+      {/* LADO IZQUIERDO: Logo Institucional con Escudo 3D */}
     <Link to="/" className={styles.logoLink} onClick={() => setMenuOpen(false)}>
-        <h1 className={styles.logo}>Boardgames</h1>
+        <div className={styles.logoContainer}>
+        <img 
+            src="/images/logoboard.png" 
+            alt="BoardGames Store Logo" 
+            className={styles.logoImg} 
+        />
+        </div>
     </Link>
     
       {/* MENÚ DESPLEGABLE (Categorías + Autenticación en Celulares) */}
